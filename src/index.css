@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color system — deep plum ink, warm paper, chartreuse + coral accents */
+  --color-ink: #1f1626;
+  --color-ink-soft: #2c2033;
+  --color-paper: #faf7f2;
+  --color-paper-dim: #f1ebe0;
+  --color-plum: #6b5c74;
+  --color-line: #e7e1d8;
+  --color-line-dark: #3a2d42;
+  --color-lime: #c6f135;
+  --color-lime-dim: #aed92a;
+  --color-coral: #ff6b4a;
+
+  /* Type system */
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --animate-marquee: marquee 28s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
